@@ -166,6 +166,12 @@ std::unique_ptr<TranslationMap> InitializeTranslations(QObject* parent) {
               "EDEN_NX2_DLSS_REPLACEMENT=dlss. Without that override, its spatial workaround "
               "remains active.\nIn The Legend of Zelda: Ocarina of Time it replaces the game's "
               "upscaler at 1x resolution scale.\nTakes effect when a game starts."));
+    INSERT(Settings, thread_pinning, tr("GPU thread pinning (applies on game start)"),
+           tr("Pins the split GPU threads to their own CPU cores and keeps the guest cores off "
+              "those cores, so an SMT sibling never shares a GPU thread's core.\nOn by default; "
+              "pinning applies when the CPU has enough performance cores.\n"
+              "EDEN_NX2_PIN_THREADS=0 turns it off and 1 forces it on, even on smaller CPUs; "
+              "either value overrides this setting.\nTakes effect at the next game boot."));
     INSERT(Settings, nvidia_dlss_quality, tr("DLSS quality:"),
            tr("Automatic picks the mode from the game's own resolution. Native (DLAA) keeps the "
               "game's resolution and only smooths it. Other modes apply when they fit the game's "
